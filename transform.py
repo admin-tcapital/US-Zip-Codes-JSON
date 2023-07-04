@@ -8,3 +8,7 @@ for i in data:
         #i["longitude"] = str(i["longitude"])
         new_data[str(i['zip_code']).zfill(5)] = i
 json.dump(json.dumps(new_data),open('SelectUSCitiesZipData.json','w'))
+cities = {x['city'] for x in new_data.values()}
+counties = {x['county'] for x in new_data.values()}
+for i in new_data:
+    json.dump(new_data[i],open(f'FL/{i}','w'))
